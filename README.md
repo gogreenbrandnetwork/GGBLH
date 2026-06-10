@@ -1,4 +1,4 @@
-azure-mcp-law-server/
+Azure-MCP-ls/
 │
 ├── server.py
 ├── requirements.txt

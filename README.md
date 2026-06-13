@@ -1,5 +1,11 @@
-Azure-MCP-ls/
-│
-├── server.py
-├── requirements.txt
-└── mcp.json
+# PAWS LIVE
+
+Starter project for the PAWS system.
+
+## Files
+- index.html
+- style.css
+- script.js
+
+## Description
+Basic setup for the PAWS LIVE project.

@@ -1,0 +1,214 @@
+import { useAuth } from "@/_core/hooks/useAuth";
+import DashboardLayout from "@/components/DashboardLayout";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Loader2, Plus, AlertCircle, Settings } from "lucide-react";
+import { trpc } from "@/lib/trpc";
+import { useState } from "react";
+import { toast } from "sonner";
+
+const PET_SPECIES = [
+  { value: "dog", label: "Dog" },
+  { value: "cat", label: "Cat" },
+  { value: "bird", label: "Bird" },
+  { value: "rabbit", label: "Rabbit" },
+  { value: "hamster", label: "Hamster" },
+  { value: "other", label: "Other" },
+];
+
+export default function Dashboard() {
+  const { user, loading } = useAuth();
+  const [isAddingPet, setIsAddingPet] = useState(false);
+  const [selectedPetId, setSelectedPetId] = useState<number | null>(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    species: "",
+    breed: "",
+    age: "",
+    description: "",
+  });
+
+  // Fetch pets
+  const { data: pets = [], isLoading: petsLoading, refetch } = trpc.pets.list.useQuery();
+  const createPetMutation = trpc.pets.create.useMutation({
+    onSuccess: () => {
+      toast.success("Pet added successfully!");
+      setFormData({ name: "", species: "", breed: "", age: "", description: "" });
+      setIsAddingPet(false);
+      refetch();
+    },
+    onError: () => {
+      toast.error("Failed to add pet");
+    },
+  });
+
+  const handleAddPet = async () => {
+    if (!formData.name || !formData.species) {
+      toast.error("Please fill in all required fields");
+      return;
+    }
+
+    await createPetMutation.mutateAsync({
+      name: formData.name,
+      species: formData.species,
+      breed: formData.breed || undefined,
+      age: formData.age ? parseInt(formData.age) : undefined,
+      description: formData.description || undefined,
+    });
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <Loader2 className="w-8 h-8 animate-spin text-accent" />
+      </div>
+    );
+  }
+
+  return (
+    <DashboardLayout>
+      <div className="space-y-8">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">My Pets</h1>
+            <p className="text-muted-foreground mt-2">Manage and monitor your beloved companions</p>
+          </div>
+          <Dialog open={isAddingPet} onOpenChange={setIsAddingPet}>
+            <DialogTrigger asChild>
+              <Button className="gap-2">
+                <Plus className="w-4 h-4" />
+                Add Pet
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Register a New Pet</DialogTitle>
+                <DialogDescription>Add your pet to PetAlert and start monitoring their health and safety.</DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="name">Pet Name *</Label>
+                  <Input
+                    id="name"
+                    placeholder="e.g., Max"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="species">Species *</Label>
+                  <Select value={formData.species} onValueChange={(value) => setFormData({ ...formData, species: value })}>
+                    <SelectTrigger id="species">
+                      <SelectValue placeholder="Select species" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {PET_SPECIES.map((s) => (
+                        <SelectItem key={s.value} value={s.value}>
+                          {s.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="breed">Breed</Label>
+                  <Input
+                    id="breed"
+                    placeholder="e.g., Golden Retriever"
+                    value={formData.breed}
+                    onChange={(e) => setFormData({ ...formData, breed: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="age">Age (years)</Label>
+                  <Input
+                    id="age"
+                    type="number"
+                    placeholder="e.g., 3"
+                    value={formData.age}
+                    onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="description">Description</Label>
+                  <Textarea
+                    id="description"
+                    placeholder="Add any additional information about your pet..."
+                    value={formData.description}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  />
+                </div>
+                <Button onClick={handleAddPet} disabled={createPetMutation.isPending} className="w-full">
+                  {createPetMutation.isPending ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Adding...
+                    </>
+                  ) : (
+                    "Add Pet"
+                  )}
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
+
+        {/* Pets Grid */}
+        {petsLoading ? (
+          <div className="flex items-center justify-center py-12">
+            <Loader2 className="w-8 h-8 animate-spin text-accent" />
+          </div>
+        ) : pets.length === 0 ? (
+          <Card>
+            <CardContent className="pt-12 text-center">
+              <AlertCircle className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">No Pets Yet</h3>
+              <p className="text-muted-foreground mb-6">Add your first pet to get started with PetAlert Warning System.</p>
+              <Dialog open={isAddingPet} onOpenChange={setIsAddingPet}>
+                <DialogTrigger asChild>
+                  <Button className="gap-2">
+                    <Plus className="w-4 h-4" />
+                    Add Your First Pet
+                  </Button>
+                </DialogTrigger>
+              </Dialog>
+            </CardContent>
+          </Card>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {pets.map((pet) => (
+              <Card key={pet.id} className="hover:shadow-premium transition-smooth cursor-pointer" onClick={() => setSelectedPetId(pet.id)}>
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <CardTitle>{pet.name}</CardTitle>
+                      <CardDescription className="capitalize">{pet.species}{pet.breed ? ` • ${pet.breed}` : ""}</CardDescription>
+                    </div>
+                    <Button variant="ghost" size="sm">
+                      <Settings className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  {pet.age && <p className="text-sm text-muted-foreground">Age: {pet.age} years</p>}
+                  {pet.description && <p className="text-sm text-muted-foreground mt-2">{pet.description}</p>}
+                  <div className="mt-4 pt-4 border-t border-border">
+                    <Button variant="outline" className="w-full" onClick={() => setSelectedPetId(pet.id)}>
+                      View Details
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
+      </div>
+    </DashboardLayout>
+  );
+}

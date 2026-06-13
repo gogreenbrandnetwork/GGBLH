@@ -50,3 +50,19 @@ export const notifications = mysqlTable("notifications", {
   readAt: timestamp("readAt"),
   createdAt: timestamp("createdAt").default(sql`(now())`).notNull(),
 });
+/**
+ * City Operations & Hired Field Personnel Management Matrix
+ */
+export const cityStaff = mysqlTable("city_staff", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  assignedCity: varchar("assignedCity", { length: 100 }).notNull(),
+  assignedState: varchar("assignedState", { length: 2 }).notNull(),
+  tasksCompleted: int("tasksCompleted").default(0).notNull(),
+  status: mysqlEnum("status", ["active", "inactive"]).default("active").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type CityStaff = typeof cityStaff.$inferSelect;
+

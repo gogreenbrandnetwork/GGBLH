@@ -1,0 +1,45 @@
+{
+  "name": "housing-mcp",
+  "version": "1.0.0",
+  "description": "Legal automation MCP for NYC housing, lotteries, eligibility, and rent stabilization.",
+  "tools": [
+    {
+      "name": "lookup_lottery",
+      "description": "Search NYC Housing Connect for open lotteries.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "borough": { "type": "string" },
+          "income": { "type": "number" },
+          "household_size": { "type": "number" }
+        },
+        "required": ["income", "household_size"]
+      }
+    },
+    {
+      "name": "eligibility_check",
+      "description": "Check AMI eligibility for a given building.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "ami": { "type": "number" },
+          "income": { "type": "number" },
+          "household_size": { "type": "number" }
+        },
+        "required": ["ami", "income", "household_size"]
+      }
+    },
+    {
+      "name": "rent_stabilization",
+      "description": "Analyze rent stabilization status and legal rent.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "address": { "type": "string" },
+          "current_rent": { "type": "number" }
+        },
+        "required": ["address"]
+      }
+    }
+  ]
+}

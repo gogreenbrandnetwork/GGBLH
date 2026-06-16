@@ -1,0 +1,273 @@
+{
+  "case_id": "PATERSON_RG_001",
+  "client_info": {
+    "name": "Ronald G Paterson",
+    "address": "316 W 95th St, New York, NY 10025-6101",
+    "state": "New York",
+    "contact": "Available upon request"
+  },
+  "property_info": {
+    "address": "132 West 129th St, New York, NY 10027",
+    "unit": "6 apartments previously leased",
+    "lease_duration": "7 years",
+    "current_monthly_rent": "$950",
+    "lease_type": "Lifetime lease"
+  },
+  "housing_court_case": {
+    "case_type": "Holdover/Eviction with Stipulation Violations",
+    "status": "Active with violations",
+    "court_order": "Lifetime tenancy at $950/month with mandatory 2-year leases",
+    "landlord_name": "Building Owner (Not fully identified in file)",
+    "stipulations_agreed": [
+      "Lifetime residency - cannot reclaim until tenant death or voluntary surrender",
+      "Fixed rent: $950/month",
+      "Mandatory 2-year leases every 2 years"
+    ],
+    "stipulations_violated": [
+      "Landlord provided 1-year general lease instead of 2-year lease",
+      "Added Clause 4: 'Nuisance clause' allowing eviction if tenant becomes nuisance to other tenants",
+      "Attempted wrongful eviction based on false non-payment claim"
+    ]
+  },
+  "inquest_case": {
+    "status": "Default judgment - tenant did not attend",
+    "reason_for_absence": "Hospitalization - medical emergency",
+    "date_of_inquest": "Approximately 1 year before case discussion",
+    "outcome": "Inquest decision (default judgment)",
+    "issue": "Landlord used this old decision to attempt wrongful eviction"
+  },
+  "eviction_attempt": {
+    "claim": "Non-payment of rent (FALSE - rent was current)",
+    "status": "Attempted/Ongoing",
+    "basis": "Used old inquest decision from year prior",
+    "tenant_response": "Court case ongoing - tenant filed OSC"
+  },
+  "property_loss": {
+    "status": "Major issue - $2+ million in belongings lost",
+    "timeline": [
+      "Tenant obtained OSC (Order to Show Cause) from court (should have halted eviction)",
+      "Upon return from court, tenant's belongings were removed from apartment",
+      "Items stored at storage facility",
+      "Storage facility lost/disposed of items",
+      "Current status: Belongings missing, value ~$2,000,000"
+    ],
+    "documents_available": [
+      "Marshal notices",
+      "Storage facility receipts",
+      "Documentation of removal process"
+    ],
+    "potential_violation": "Property removed after court-ordered stay - possible violation of tenant rights"
+  },
+  "civil_suits": {
+    "total_lawsuits": 4,
+    "defendants": "Building owner (primary)",
+    "potential_defendants": [
+      "Building owner",
+      "Marshal (for improper removal after stay)",
+      "Storage facility (for lost property)"
+    ],
+    "claims": [
+      "Wrongful eviction",
+      "Loss of personal property (~$2 million)",
+      "Damages for violation of court order (stay)",
+      "Emotional distress and hardship"
+    ],
+    "status": "Ongoing"
+  },
+  "criminal_case_impact": {
+    "situation": "Separate criminal case - tenant missed court date due to medical emergency",
+    "incident": "Passed out on train en route to court, hit head, arrived at court bleeding",
+    "hospital_documentation": "Hospital ID bands worn during subsequent court appearances",
+    "outcome": "Pressured to accept plea/settlement despite medical hardship",
+    "attorney_issue": "Assigned counsel did not provide effective assistance; pressured acceptance"
+  },
+  "health_and_disability_issues": {
+    "conditions": [
+      "Heart failure",
+      "Chronic pain",
+      "Opioid use disorder",
+      "Hypertension",
+      "Seizures or fainting episodes"
+    ],
+    "hospitalization_history": "Multiple hospitalizations over 5+ years with recent emergencies",
+    "court_attendance_barriers": [
+      "Repeated fainting episodes",
+      "Hospitalization coinciding with court dates",
+      "Inability to travel safely due to medical conditions",
+      "Limited capacity to participate fully in court proceedings"
+    ],
+    "evidence": [
+      "Medical records (MyMountSin.pdf and others)",
+      "Hospital discharge summaries",
+      "Hospital ID band photos/evidence",
+      "Timeline of hospitalizations vs. court dates"
+    ],
+    "ada_considerations": "Possible ADA violation - court may not have properly accommodated disabilities"
+  },
+  "legal_issues_summary": [
+    "Wrongful eviction attempt",
+    "Stipulation violation (1-year vs. 2-year lease; nuisance clause added)",
+    "Loss of property (~$2 million) after court-ordered stay",
+    "Possible violation of stay by marshal",
+    "Four ongoing civil lawsuits for damages",
+    "Ineffective assistance of counsel",
+    "Missed court dates due to disability/hospitalization (potential grounds for relief)",
+    "Default judgment from inquest (possible motion to vacate)"
+  ],
+  "grounds_for_relief": {
+    "motion_to_vacate_inquest": {
+      "basis": "Excusable default - hospitalization",
+      "evidence": [
+        "Medical records showing hospitalization on date of inquest",
+        "Hospital documentation",
+        "Proof of medical emergency"
+      ],
+      "likelihood": "Strong - documented medical cause for absence"
+    },
+    "motion_to_vacate_eviction": {
+      "basis": "Violation of court-ordered stay; wrongful eviction",
+      "evidence": [
+        "Copy of OSC and court-ordered stay",
+        "Marshal documents showing removal after stay",
+        "Storage facility records",
+        "Timeline proving removal occurred post-stay"
+      ],
+      "likelihood": "Strong - clear violation of court order"
+    },
+    "ineffective_assistance_of_counsel": {
+      "basis": "Assigned counsel failed to present medical evidence; pressured into unfavorable plea",
+      "evidence": [
+        "Hospital records and ID bands worn in court",
+        "Notes on pressure to accept plea",
+        "Records of counsel's lack of support"
+      ],
+      "likelihood": "Moderate to Strong - documented circumstances"
+    },
+    "poor_person_status": {
+      "basis": "Financial hardship",
+      "purpose": "Waive court fees, improve access to legal aid",
+      "next_step": "File in forma pauperis affidavit"
+    }
+  },
+  "legal_aid_status": {
+    "organizations_contacted": [
+      "Legal Aid Society - WILLING TO HELP (requires open case)",
+      "Legal Services NYC",
+      "NYLAG",
+      "Mobilization for Justice"
+    ],
+    "current_status": "Legal Aid Society requires active/open court case",
+    "next_step": "File motion to reopen case; notify Legal Aid immediately after filing"
+  },
+  "pro_bono_resources": {
+    "resources": [
+      {
+        "name": "Legal Aid Society",
+        "url": "legalaidnyc.org",
+        "note": "Will help once case is active"
+      },
+      {
+        "name": "Legal Services NYC",
+        "url": "legalservicesnyc.org"
+      },
+      {
+        "name": "NYLAG",
+        "url": "nylag.org"
+      },
+      {
+        "name": "Mobilization for Justice",
+        "url": "mfjlegal.org"
+      },
+      {
+        "name": "City Bar Justice Center",
+        "url": "citybarjusticecenter.org"
+      }
+    ]
+  },
+  "action_plan": {
+    "step_1": {
+      "title": "Gather All Documents",
+      "details": "Collect medical records, court notices, eviction papers, marshal documents, storage receipts, landlord communications",
+      "status": "In Progress"
+    },
+    "step_2": {
+      "title": "Create Timeline and Case Summary",
+      "details": "Document all events chronologically with dates, participants, and supporting evidence",
+      "status": "In Progress"
+    },
+    "step_3": {
+      "title": "Draft Motion to Vacate (Inquest)",
+      "details": "File motion based on excusable default due to hospitalization",
+      "documents_needed": [
+        "Medical records",
+        "Hospital discharge summaries",
+        "Timeline of hospitalization vs. inquest date"
+      ],
+      "status": "Ready to Draft"
+    },
+    "step_4": {
+      "title": "Draft Motion to Vacate (Eviction)",
+      "details": "File motion challenging wrongful eviction and stay violation",
+      "documents_needed": [
+        "Copy of OSC and stay order",
+        "Marshal documents",
+        "Storage facility records",
+        "Timeline proving removal after stay"
+      ],
+      "status": "Ready to Draft"
+    },
+    "step_5": {
+      "title": "File Poor Person Affidavit (In Forma Pauperis)",
+      "details": "Request court fee waivers and improve eligibility for legal aid",
+      "status": "Ready to File"
+    },
+    "step_6": {
+      "title": "Notify Legal Aid Society",
+      "details": "Submit proof of open/active case to Legal Aid for representation",
+      "contact": "legalaidnyc.org",
+      "status": "Pending - wait for Step 3-4 completion"
+    },
+    "step_7": {
+      "title": "Prepare for Court Hearing",
+      "details": "Organize evidence, medical records, affidavits for court appearance",
+      "accommodations": "Request accessible court date given disability/medical needs",
+      "status": "Pending"
+    },
+    "step_8": {
+      "title": "Coordinate Civil Suits",
+      "details": "Ensure all 4 civil lawsuits are documented and progressing",
+      "claims": [
+        "Loss of property",
+        "Wrongful eviction",
+        "Damages for stay violation",
+        "Emotional distress"
+      ],
+      "status": "Ongoing"
+    },
+    "step_9": {
+      "title": "Work with Assigned Counsel",
+      "details": "Once Legal Aid assigns attorney, provide all documents and timeline",
+      "status": "Pending"
+    }
+  },
+  "key_documents_needed": [
+    "Original court order establishing lifetime tenancy",
+    "Court order for 2-year lease requirement",
+    "All lease agreements (comparing 2-year vs. 1-year)",
+    "Copy of OSC (Order to Show Cause) with stay",
+    "Marshal's removal notice and timeline",
+    "Storage facility receipt and property list",
+    "Medical records (5+ years of hospitalizations)",
+    "Hospital discharge summaries for relevant dates",
+    "Hospital ID band evidence (photos, receipts)",
+    "Timeline of missed court dates vs. hospitalizations",
+    "Communications with landlord (all written)",
+    "Communications with marshal",
+    "Communications with storage facility",
+    "Notice of assigned counsel",
+    "Records of ineffective assistance",
+    "Police report (if available for train incident)",
+    "Civil lawsuit filings (all 4 suits)"
+  ],
+  "notes": "This case involves complex intersection of housing law, wrongful eviction, property loss, and disability rights. Strong grounds exist for relief on multiple fronts. Legal Aid Society support pending active case status. Medical documentation is critical to all relief motions."
+}
